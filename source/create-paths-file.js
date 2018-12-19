@@ -4,7 +4,6 @@ const path = require('path');
 
 const getComponentMetadata = require('./get-component-metadata');
 const handleKlawError = require('./handle-klaw-error');
-const importStatement = require('./import-statement');
 const writeFile = require('./write-file');
 
 module.exports = ({
@@ -29,24 +28,10 @@ module.exports = ({
         : accumulator;
     }, []);
 
-    const importStatements = pages.reduce(
-      (accumulator, { componentName, folderPath }) =>
-        accumulator + importStatement(componentName, outputPath, folderPath),
-      ''
-    );
+    const exportContent = pages.map(page => `'${page.path}'`);
 
-    const exportContent = pages.map(
-      page =>
-        `{
-        component: ${page.componentName},
-        group: '${page.group}',
-        name: '${page.name}',
-        path: '${page.path}'
-      }`
-    );
-
-    const exportStatement = `export default [\n${exportContent.join(',\n')}];`;
-    const pagesFileContent = `${fileHeader}\n\n${importStatements}\n${exportStatement}\n`;
+    const exportStatement = `module.exports = [\n${exportContent.join(',\n')}];`;
+    const pagesFileContent = `${fileHeader}\n\n${exportStatement}\n`;
 
     writeFile(path.join(outputPath, fileName), pagesFileContent, prettierOptions);
   } catch (error) {
