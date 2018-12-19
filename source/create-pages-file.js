@@ -4,6 +4,7 @@ const path = require('path');
 
 const getComponentMetadata = require('./get-component-metadata');
 const handleKlawError = require('./handle-klaw-error');
+const importStatement = require('./import-statement');
 const writeFile = require('./write-file');
 
 module.exports = ({
@@ -22,13 +23,15 @@ module.exports = ({
       filter: item => path.basename(item.path)[0] !== '.'
     }).reduce((accumulator, { path: filePath }) => {
       const metadata = getComponentMetadata(filePath);
-      return accumulator.concat(Object.keys(metadata).length > 0 ? metadata : []);
+
+      return Object.keys(metadata).length > 0
+        ? accumulator.concat(metadata)
+        : accumulator;
     }, []);
 
     const importStatements = pages.reduce(
-      (accumulator, { componentName, folderName }) =>
-        accumulator +
-        `import ${componentName} from './${folderName.replace(/\\/g, '/')}';\n`,
+      (accumulator, { componentName, folderPath }) =>
+        accumulator + importStatement(componentName, outputPath, folderPath),
       ''
     );
 

@@ -27,7 +27,7 @@ function getComponentMetadata(filePath) {
 
     return {
       componentName,
-      folderName,
+      folderPath,
       group,
       name,
       path: url.startsWith('/') ? url : '/' + url

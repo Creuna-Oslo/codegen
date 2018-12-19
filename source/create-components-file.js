@@ -6,6 +6,7 @@ const path = require('path');
 
 const getComponentMetadata = require('./get-component-metadata');
 const handleKlawError = require('./handle-klaw-error');
+const importStatement = require('./import-statement');
 const writeFile = require('./write-file');
 
 module.exports = ({
@@ -25,17 +26,16 @@ module.exports = ({
     const components = klawSync(componentsPath, {
       filter: item => path.basename(item.path)[0] !== '.'
     }).reduce((accumulator, { path: filePath }) => {
-      const { componentName } = getComponentMetadata(filePath);
-      const folderPath = path.relative(outputPath, path.dirname(filePath));
+      const { componentName, folderPath } = getComponentMetadata(filePath);
 
       return !componentName
         ? accumulator
-        : { ...accumulator, [componentName]: `./${folderPath}` };
+        : { ...accumulator, [componentName]: folderPath };
     }, {});
 
     const importStatements = Object.entries(components).reduce(
-      (accumulator, [name, folderPath]) =>
-        accumulator + `import ${name} from '${folderPath.replace(/\\/g, '/')}';\n`,
+      (accumulator, [componentName, folderPath]) =>
+        accumulator + importStatement(componentName, outputPath, folderPath),
       ''
     );
 
