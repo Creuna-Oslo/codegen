@@ -26,21 +26,23 @@ module.exports = ({
     const components = klawSync(componentsPath, {
       filter: item => path.basename(item.path)[0] !== '.'
     }).reduce((accumulator, { path: filePath }) => {
-      const { componentName, folderPath } = getComponentMetadata(filePath);
+      const metadata = getComponentMetadata(filePath);
 
-      return !componentName
-        ? accumulator
-        : { ...accumulator, [componentName]: folderPath };
-    }, {});
+      return Object.keys(metadata).length > 0
+        ? accumulator.concat(metadata)
+        : accumulator;
+    }, []);
 
-    const importStatements = Object.entries(components).reduce(
-      (accumulator, [componentName, folderPath]) =>
+    const importStatements = components.reduce(
+      (accumulator, { componentName, folderPath }) =>
         accumulator + importStatement(componentName, outputPath, folderPath),
       ''
     );
 
-    const exportProperties = Object.keys(components).join(',\n  ');
-    const exportStatement = `export {\n  ${exportProperties}\n}`;
+    const exportProperties = components
+      .map(({ componentName }) => componentName)
+      .join(',\n  ');
+    const exportStatement = `export {\n${exportProperties}\n}`;
 
     const fileContent = `${fileHeader}\n\n${importStatements}\n${exportStatement}\n`;
 
