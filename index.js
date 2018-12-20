@@ -1,5 +1,11 @@
+const createFile = require('./source/create-file');
+
+const stringifyComponents = require('./source/stringifiers/components-file');
+const stringifyPages = require('./source/stringifiers/pages-file');
+const stringifyPaths = require('./source/stringifiers/paths-file');
+
 module.exports = {
-  createComponentsFile: require('./source/create-components-file'),
-  createPagesFile: require('./source/create-pages-file'),
-  createPathsFile: require('./source/create-paths-file')
+  createComponentsFile: options => createFile(stringifyComponents, options),
+  createPagesFile: options => createFile(stringifyPages, options),
+  createPathsFile: options => createFile(stringifyPaths, options)
 };
