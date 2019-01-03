@@ -23,7 +23,7 @@ function getComponentMetadata(filePath) {
     const { data } = frontmatter(componentFileContent);
     const url = data ? data.path || folderName : folderName;
     const name = data ? data.name || componentName : componentName;
-    const group = data ? data.group || 'Ungrouped' : 'Ungrouped';
+    const group = data ? data.group || '' : '';
 
     return {
       componentName,
