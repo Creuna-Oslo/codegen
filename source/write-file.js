@@ -7,7 +7,7 @@ const prettier = require('prettier');
 
 function writeFile(filePath, fileContent, prettierOptions) {
   const fileName = path.basename(filePath);
-  const prettierConfig = Object.assign({ parser: 'babylon' }, prettierOptions);
+  const prettierConfig = Object.assign({ parser: 'babel' }, prettierOptions);
 
   fs.writeFile(filePath, prettier.format(fileContent, prettierConfig), {}, err => {
     if (!err) {
