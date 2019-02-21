@@ -2,8 +2,8 @@ const importStatement = require('./import-statement');
 
 module.exports = (pages = [], outputPath) => {
   const importStatements = pages.reduce(
-    (accumulator, { componentName, folderPath }) =>
-      accumulator + importStatement(componentName, outputPath, folderPath),
+    (accumulator, { componentName, filePath }) =>
+      accumulator + importStatement(componentName, outputPath, filePath),
     ''
   );
 

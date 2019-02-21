@@ -1,12 +1,9 @@
-/* eslint-disable no-console */
-const assert = require('assert');
-const chalk = require('chalk');
 const importStatement = require('./import-statement');
 
 module.exports = (components = [], outputPath) => {
   const importStatements = components.reduce(
-    (accumulator, { componentName, folderPath }) =>
-      accumulator + importStatement(componentName, outputPath, folderPath),
+    (accumulator, { componentName, filePath }) =>
+      accumulator + importStatement(componentName, outputPath, filePath),
     ''
   );
 
