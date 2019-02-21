@@ -7,7 +7,7 @@ test('Creates pages file', testWithFixture, {
   fixturePath: path.join(__dirname, 'fixtures', 'pages'),
   testSubject: require('../index').createPagesFile,
   expected: `import A from "./a";
-import B from "./b";
+import B from "./b/b.jsx";
 
 export default [
   {

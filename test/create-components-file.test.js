@@ -7,7 +7,7 @@ test('Creates components file', testWithFixture, {
   fixturePath: path.join(__dirname, 'fixtures', 'components'),
   testSubject: require('../index').createComponentsFile,
   expected: `import A from "./a";
-import B from "./b";
+import B from "./b/b.jsx";
 
 export { A, B };
 `
