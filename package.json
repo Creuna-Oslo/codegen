@@ -11,7 +11,8 @@
     "README.md"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "dev": "ava --verbose --watch",
+    "test": "ava --verbose"
   },
   "repository": {
     "type": "git",
