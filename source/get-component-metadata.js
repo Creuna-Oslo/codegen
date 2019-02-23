@@ -10,7 +10,7 @@ function getComponentMetadata(filePath) {
   const fileName = path.basename(filePath, '.jsx');
   const folderName = path.basename(folderPath);
 
-  if (fileName === folderName && fs.existsSync(indexFile)) {
+  if (fileName === folderName) {
     const componentName =
       folderName[0] === folderName[0].toUpperCase()
         ? folderName
@@ -27,7 +27,7 @@ function getComponentMetadata(filePath) {
 
     return {
       componentName,
-      folderPath,
+      filePath: fs.existsSync(indexFile) ? folderPath : filePath,
       group,
       name,
       path: url.startsWith('/') ? url : '/' + url

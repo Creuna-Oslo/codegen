@@ -1,6 +1,6 @@
 {
   "name": "@creuna/codegen",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "",
   "main": "index.js",
   "files": [
@@ -11,7 +11,8 @@
     "README.md"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "dev": "ava --verbose --watch",
+    "test": "ava --verbose"
   },
   "repository": {
     "type": "git",
@@ -24,12 +25,16 @@
   },
   "homepage": "https://github.com/Creuna-Oslo/codegen#readme",
   "devDependencies": {
+    "ava": "^1.2.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.12.1",
     "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-prettier": "^3.0.1"
+    "eslint-plugin-prettier": "^3.0.1",
+    "fs-extra": "^7.0.1",
+    "tempy": "^0.2.1"
   },
   "dependencies": {
+    "@creuna/utils": "^1.1.0",
     "chalk": "^2.4.2",
     "js-yaml": "^3.12.1",
     "klaw-sync": "^6.0.0",
