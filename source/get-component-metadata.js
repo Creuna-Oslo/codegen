@@ -4,10 +4,10 @@ const path = require('path');
 const frontmatter = require('./frontmatter');
 const kebabToPascal = require('@creuna/utils/kebab-to-pascal').default;
 
-function getComponentMetadata(filePath) {
+function getComponentMetadata(filePath, fileExtension) {
   const folderPath = path.dirname(filePath);
   const indexFile = path.join(folderPath, 'index.js');
-  const fileName = path.basename(filePath, '.jsx');
+  const fileName = path.basename(filePath, fileExtension);
   const folderName = path.basename(folderPath);
 
   if (fileName === folderName) {

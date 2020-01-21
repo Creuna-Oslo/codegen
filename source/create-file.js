@@ -14,25 +14,30 @@ module.exports = (
     fileName,
     outputPath,
     prettierOptions,
-    searchPath
+    searchPath,
+    fileExtension
   }
 ) => {
   assert(searchPath, 'Options.searchPath is required.');
   assert(outputPath, 'Options.outputPath is required.');
   assert(fileName, 'Options.fileName is required.');
-
+  fileExtension = fileExtension ? '.' + fileExtension.trim('.') : '.jsx';
   try {
     const components = klawSync(searchPath, {
       filter: item => path.basename(item.path)[0] !== '.'
     }).reduce((accumulator, { path: filePath }) => {
-      const metadata = getComponentMetadata(filePath);
+      const metadata = getComponentMetadata(filePath, fileExtension);
 
       return Object.keys(metadata).length > 0
         ? accumulator.concat(metadata)
         : accumulator;
     }, []);
 
-    const fileContent = `${fileHeader}\n\n${stringifier(components, outputPath)}\n`;
+    const fileContent = `${fileHeader}\n\n${stringifier(
+      components,
+      outputPath,
+      fileExtension
+    )}\n`;
 
     writeFile(path.join(outputPath, fileName), fileContent, prettierOptions);
   } catch (error) {
