@@ -8,10 +8,10 @@ module.exports = (name, importerPath, modulePath, fileExtension) => {
         .relative(importerPath, modulePath)
         .replace(/\\/g, '/')
         .replace(/\.[^/.]+$/, '');
-      break;
+      return `import {${name}} from './${relativePath}';\n`;
     default:
       relativePath = path.relative(importerPath, modulePath).replace(/\\/g, '/');
+      return `import ${name} from './${relativePath}';\n`;
   }
 
-  return `import ${name} from './${relativePath}';\n`;
 };
