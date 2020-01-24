@@ -15,13 +15,12 @@ module.exports = (
     outputPath,
     prettierOptions,
     searchPath,
-    fileExtension
+    fileExtension = ".jsx"
   }
 ) => {
   assert(searchPath, 'Options.searchPath is required.');
   assert(outputPath, 'Options.outputPath is required.');
   assert(fileName, 'Options.fileName is required.');
-  fileExtension = fileExtension ? '.' + fileExtension.trim('.') : '.jsx';
   try {
     const components = klawSync(searchPath, {
       filter: item => path.basename(item.path)[0] !== '.'
