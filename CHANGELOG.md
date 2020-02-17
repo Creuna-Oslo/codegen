@@ -1,3 +1,7 @@
+# 0.3.0
+
+- Added support for .tsx files
+
 # 0.2.3
 
 - Fixes [#10](https://github.com/Creuna-Oslo/codegen/issues/10) (components not being included if they lacked an `index.js` file.)
