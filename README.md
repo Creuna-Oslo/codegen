@@ -46,6 +46,10 @@ In this example, only `component` will be included. `blabla.jsx` does not match 
 - **searchPath**: `String`
   (The path in which to look for components)
 
+- **fileExtension**: `String`
+  (The file extension you are working with. It will change the import style of the components. Written in the form .[fileExtension]. It defaults to '.jsx')
+  (For example: '.tsx'.)
+
 ### createComponentsFile
 
 ```js
@@ -55,7 +59,8 @@ const path = require("path");
 createComponentsFile({
   searchPath: path.join(__dirname, "components"),
   fileName: "app.components.js",
-  outputPath: __dirname
+  outputPath: __dirname,
+  fileExtension: '.tsx'
 });
 ```
 
@@ -94,7 +99,8 @@ const path = require("path");
 createPagesFile({
   fileName: "pages.js",
   searchPath: path.join(__dirname, "pages"),
-  outputPath: __dirname
+  outputPath: __dirname,
+  fileExtension: '.jsx'
 });
 ```
 
