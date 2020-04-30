@@ -1,43 +1,43 @@
 {
-  "name": "@creuna/codegen",
-  "version": "0.3.0",
-  "description": "",
-  "main": "index.js",
-  "files": [
-    "index.js",
-    "source",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md"
-  ],
-  "scripts": {
-    "dev": "ava --verbose --watch",
-    "test": "ava --verbose"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Creuna-Oslo/codegen.git"
-  },
-  "author": "Asbjørn Hegdahl <asbjorn.hegdahl@creuna.no>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Creuna-Oslo/codegen/issues"
-  },
-  "homepage": "https://github.com/Creuna-Oslo/codegen#readme",
-  "devDependencies": {
-    "ava": "^1.2.1",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.1",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "fs-extra": "^7.0.1",
-    "tempy": "^0.2.1"
-  },
-  "dependencies": {
-    "@creuna/utils": "^1.1.0",
-    "chalk": "^2.4.2",
-    "js-yaml": "^3.12.1",
-    "klaw-sync": "^6.0.0",
-    "prettier": "^1.16.3"
-  }
+    "name": "@creuna/codegen",
+    "version": "0.3.0",
+    "description": "",
+    "main": "index.js",
+    "files": [
+        "index.js",
+        "source",
+        "CHANGELOG.md",
+        "LICENSE",
+        "README.md"
+    ],
+    "scripts": {
+        "dev": "ava --verbose --watch",
+        "test": "ava --verbose"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Creuna-Oslo/codegen.git"
+    },
+    "author": "Asbjørn Hegdahl <asbjorn.hegdahl@creuna.no>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Creuna-Oslo/codegen/issues"
+    },
+    "homepage": "https://github.com/Creuna-Oslo/codegen#readme",
+    "devDependencies": {
+        "ava": "^1.2.1",
+        "babel-eslint": "^10.0.1",
+        "eslint": "^5.12.1",
+        "eslint-config-prettier": "^4.0.0",
+        "eslint-plugin-prettier": "^3.0.1",
+        "fs-extra": "^7.0.1",
+        "tempy": "^0.2.1"
+    },
+    "dependencies": {
+        "@creuna/utils": "^1.1.0",
+        "chalk": "^2.4.2",
+        "js-yaml": "^3.12.1",
+        "klaw-sync": "^6.0.0",
+        "prop-types": "^15.7.2"
+    }
 }

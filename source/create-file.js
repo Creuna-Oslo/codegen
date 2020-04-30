@@ -15,7 +15,7 @@ module.exports = (
     outputPath,
     prettierOptions,
     searchPath,
-    fileExtension = ".jsx"
+    fileExtension = '.jsx'
   }
 ) => {
   assert(searchPath, 'Options.searchPath is required.');
