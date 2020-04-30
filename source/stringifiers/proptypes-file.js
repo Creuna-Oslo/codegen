@@ -16,7 +16,7 @@ module.exports = (components = [], outputPath, fileExtension) => {
       .join(',\n  ') +
     '\n};\n';
 
-    const exportStatement = `export {\n appComponentsProps \n}`;
+  const exportStatement = `export default {\n appComponentsProps \n}`;
 
   return `${importStatements}\n${propTypesObject}\n${exportStatement}\n`;
 };
