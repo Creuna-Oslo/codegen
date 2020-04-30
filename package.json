@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "dev": "ava --verbose --watch",
-    "test": "ava --verbose"
+      "test": "ava --verbose",
+    "lint:fix": "eslint --ext js,jsx ./source --fix"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "chalk": "^2.4.2",
     "js-yaml": "^3.12.1",
     "klaw-sync": "^6.0.0",
-    "prettier": "^1.16.3"
+    "prettier": "^1.16.3",
+    "prop-types": "^15.7.2"
   }
 }

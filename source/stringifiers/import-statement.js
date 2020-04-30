@@ -13,5 +13,4 @@ module.exports = (name, importerPath, modulePath, fileExtension) => {
       relativePath = path.relative(importerPath, modulePath).replace(/\\/g, '/');
       return `import ${name} from './${relativePath}';\n`;
   }
-
 };
